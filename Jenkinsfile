@@ -4,8 +4,8 @@ pipeline {
         MY_ENV = '1.1.0'
     }
     parameters {
-        string(name: 'version_str', defaultValue: 'ffan', description: 'version to prod')
-        choice(name: 'version_cho', choices: ['1', '2', '3'], description: 'choices desc')
+        string(name: 'string variable', defaultValue: 'ffan', description: 'version to prod')
+        choice(name: 'choice variables', choices: ['1', '2', '3'], description: 'choices desc')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
 
@@ -15,7 +15,6 @@ pipeline {
                 echo 'Building..'
                 echo "version ${MY_ENV}" 
             }
-    
         }
         stage('Test') {
             when {
@@ -25,19 +24,14 @@ pipeline {
                 } 
             }
             steps {
-            echo 'Testing..'
-        
+                echo 'Testing..'
             }
-    
         }
         stage('Deploy') {
             steps {
-            echo 'Deploying....'
-            echo "use param version_str ${params.version_str}"
-        
+                echo 'Deploying....'
+                echo "use param version_str ${params.version_str}"
             }
-    
         }
-
     }
 }
