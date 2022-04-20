@@ -21,7 +21,7 @@ pipeline {
             when {
                 expression {
                     BRANCH_NAME == 'ffan' || BRANCH_NAME == 'main'
-                    params.execute
+                    //params.execute
                 } 
             }
             steps {
@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy') {
             steps {
             echo 'Deploying....'
-            echo "use param version_str ${params.version_str}"
+//            echo "use param version_str ${params.version_str}"
         
             }
     
