@@ -1,33 +1,36 @@
 pipeline {
     agent any
+    environment {
+        MY_ENV = '1.1.0'
+    }
 
-        stages {
-            stage('Build') {
-                steps {
+    stages {
+        stage('Build') {
+            steps {
                 echo 'Building..'
-            
-                }
-        
+                echo "version ${MY_ENV}" 
             }
-            stage('Test') {
-                when {
-                    expression {
-                        BRANCH_NAME == 'ffan' || BRANCH_NAME == 'master'
-                    } 
-                }
-                steps {
-                echo 'Testing..'
-            
-                }
-        
+    
+        }
+        stage('Test') {
+            when {
+                expression {
+                    BRANCH_NAME == 'ffan' || BRANCH_NAME == 'master'
+                } 
             }
-            stage('Deploy') {
-                steps {
-                echo 'Deploying....'
-            
-                }
+            steps {
+            echo 'Testing..'
         
             }
     
         }
+        stage('Deploy') {
+            steps {
+            echo 'Deploying....'
+        
+            }
+    
+        }
+
+    }
 }
