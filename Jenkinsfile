@@ -24,7 +24,9 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo "version ${MY_ENV}" 
-                gv.build_app()
+                script {
+                    gv.build_app()
+                }
             }
         }
         stage('Test') {
@@ -42,6 +44,9 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 echo "use param version_str ${params.string_var}"
+                script {
+                    gv.deploy_app()
+                }
             }
         }
     }
