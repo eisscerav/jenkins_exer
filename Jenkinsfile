@@ -6,7 +6,7 @@ pipeline {
     parameters {
         string(name: 'version_str', defaultValue: 'ffan', description: 'version to prod')
         choice(name: 'version_cho', choices: ['1', '2', '3'], description: 'choices desc')
-        //booleanParam(name: 'execute', defaultValue: True, description: 'bool parameter')
+        booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
 
     stages {
@@ -21,7 +21,7 @@ pipeline {
             when {
                 expression {
                     BRANCH_NAME == 'ffan' || BRANCH_NAME == 'main'
-                    //params.execute
+                    params.execute
                 } 
             }
             steps {
@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy') {
             steps {
             echo 'Deploying....'
-//            echo "use param version_str ${params.version_str}"
+            echo "use param version_str ${params.version_str}"
         
             }
     
