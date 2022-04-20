@@ -5,7 +5,7 @@ pipeline {
     }
     parameters {
         string(name: 'version_str', defaultValue: 'ffan', description: 'version to prod')
-        //choice(name: 'version_cho', choices: ['1', '2', '3'], description: 'choices desc')
+        choice(name: 'version_cho', choices: ['1', '2', '3'], description: 'choices desc')
         //booleanParam(name: 'execute', defaultValue: True, description: 'bool parameter')
     }
 
