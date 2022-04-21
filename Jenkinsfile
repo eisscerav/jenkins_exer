@@ -1,13 +1,13 @@
 def gv
 
 pipeline {
-    agent any
+    agent {label "${agent}"}
     environment {
         MY_ENV = '1.1.0'
     }
     parameters {
         string(name: 'string_var', defaultValue: 'ffan', description: 'version to prod')
-        choice(name: 'choice_var', choices: ['1', '2', '3'], description: 'choices desc')
+        choice(name: 'agent', choices: ['P5000', 'RTX4000'], description: 'choose agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
 
@@ -26,6 +26,7 @@ pipeline {
                 echo "version ${MY_ENV}" 
                 sh "ls"
                 sh "pwd"
+                sh "python main.py"
                 script {
                     gv.build_app()
                 }
