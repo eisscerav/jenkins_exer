@@ -8,7 +8,7 @@ def test_app() {
 }
 
 def deploy_app() {
-  echo 'build app function'
+  echo 'deploy app function'
   echo "use parameter ${params.string_var}"
 }
 
