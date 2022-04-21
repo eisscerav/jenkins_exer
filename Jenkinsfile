@@ -24,6 +24,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo "version ${MY_ENV}" 
+                sh "ls"
+                sh "pwd"
                 script {
                     gv.build_app()
                 }
