@@ -60,6 +60,11 @@ pipeline {
                 }
             }
         }
+        stage('archive') {
+            steps {
+                archiveArtifacts(artifacts: 'tmp/*', followSymlinks: false)   
+            }
+        }
     }
 }
 
