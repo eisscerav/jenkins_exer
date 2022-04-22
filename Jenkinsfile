@@ -12,6 +12,7 @@ pipeline {
         string(name: 'string_var', defaultValue: 'ffan', description: 'version to prod')
         choice(name: 'agent', choices: ['P5000', 'RTX4000'], description: 'choose agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
 
     stages {
