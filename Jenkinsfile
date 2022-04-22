@@ -5,6 +5,9 @@ pipeline {
     environment {
         MY_ENV = '1.1.0'
     }
+    options {
+        timeout(time: 1, unit: 'HOURS')  // supported unit: HOURS, MINUTES, SECONDS
+    }
     parameters {
         string(name: 'string_var', defaultValue: 'ffan', description: 'version to prod')
         choice(name: 'agent', choices: ['P5000', 'RTX4000'], description: 'choose agent to run')
@@ -12,9 +15,7 @@ pipeline {
     }
 
     stages {
-        options {
-            timeout(time: 1, unit: 'HOURS')  // supported unit: HOURS, MINUTES, SECONDS
-        }
+
         stage('init') {
             steps {
                 script {
