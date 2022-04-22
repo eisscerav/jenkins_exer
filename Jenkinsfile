@@ -12,6 +12,9 @@ pipeline {
     }
 
     stages {
+        options {
+            timeout(time: 1, unit: 'HOURS')  // supported unit: HOURS, MINUTES, SECONDS
+        }
         stage('init') {
             steps {
                 script {
