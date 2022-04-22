@@ -2,6 +2,9 @@ def gv
 
 pipeline {
     agent {label "${agent}"}
+    /*triggers {
+        cron('H */4 * * 1-5')
+    }*/
     environment {
         MY_ENV = '1.1.0'
     }
