@@ -33,12 +33,14 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-                    ${BRANCH_NAME} == 'ffan' || ${BRANCH_NAME} == 'main'
+                    ${env.BRANCH_NAME} == 'ffan' || ${env.BRANCH_NAME} == 'main'
                     //echo "params.execute ${params.execute}"
                 } 
             }
             steps {
                 echo 'Testing..'
+                echo "${env.BUILD_ID}"
+                echo "${env.JOB_NAME}"
             }
         }
         stage('Deploy') {
