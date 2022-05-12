@@ -25,8 +25,8 @@ pipeline {
                 echo 'Building..'
                 echo "version ${MY_ENV}" 
                 script {
-                    def n = gv.build_app()
-                    echo '${n}'
+                    n = gv.build_app()
+                    echo "${n}"
                 }
             }
         }
