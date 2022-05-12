@@ -33,7 +33,7 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-                    ${env.BRANCH_NAME} == 'ffan' || ${env.BRANCH_NAME} == 'main'
+                    BRANCH_NAME == 'ffan'
                     //echo "params.execute ${params.execute}"
                 } 
             }
