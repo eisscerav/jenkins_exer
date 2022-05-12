@@ -1,13 +1,14 @@
 def gv
+my_agents = ['P5000', 'RTX4000', 'K4200']
 
 pipeline {
-    agent any
+    agent {label "${agent}"}
     environment {
         MY_ENV = '1.1.0'
     }
     parameters {
         string(name: 'string_var', defaultValue: 'ffan', description: 'version to prod')
-        choice(name: 'choice_var', choices: ['1', '2', '3'], description: 'choices desc')
+        choice(name: 'agent', choices: my_agents, description: 'choose specific agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
 
