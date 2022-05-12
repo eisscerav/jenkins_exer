@@ -25,15 +25,16 @@ pipeline {
                 echo 'Building..'
                 echo "version ${MY_ENV}" 
                 script {
-                    gv.build_app()
+                    def n = gv.build_app()
+                    echo '${n}'
                 }
             }
         }
         stage('Test') {
             when {
                 expression {
-                    BRANCH_NAME == 'ffan' || BRANCH_NAME == 'main'
-                    params.execute
+                    ${BRANCH_NAME} == 'ffan' || ${BRANCH_NAME} == 'main'
+                    echo "params.execute ${params.execute}"
                 } 
             }
             steps {
