@@ -34,7 +34,7 @@ pipeline {
             when {
                 expression {
                     ${BRANCH_NAME} == 'ffan' || ${BRANCH_NAME} == 'main'
-                    echo "params.execute ${params.execute}"
+                    //echo "params.execute ${params.execute}"
                 } 
             }
             steps {
