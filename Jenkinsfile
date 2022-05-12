@@ -44,6 +44,8 @@ pipeline {
                 echo "${env.JOB_NAME}"
                 echo "${env.BRANCH_NAME}"
                 sh(script: "python3 main.py --family ffan_home")
+                sh("mkdir tmp")
+                sh("touch tmp/a.txt")
             }
         }
         stage('Deploy') {
@@ -54,6 +56,17 @@ pipeline {
                     gv.deploy_app()
                 }
             }
+        }
+        stage('archive') {
+            steps {
+                archiveArtifacts(artifacts: 'tmp/*', followSymlinks: false)  
+            }
+        }
+    }
+    
+    post {
+        always {
+            cleanWs()
         }
     }
 }
