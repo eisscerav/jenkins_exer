@@ -43,6 +43,7 @@ pipeline {
                 echo "${env.BUILD_ID}"
                 echo "${env.JOB_NAME}"
                 echo "${env.BRANCH_NAME}"
+                sh(script: "python3 main.py --family ffan_home")
             }
         }
         stage('Deploy') {
