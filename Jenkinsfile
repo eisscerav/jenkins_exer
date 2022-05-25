@@ -29,12 +29,17 @@ pipeline {
                     n = gv.build_app()
                     echo "${n}"
                 }
+                sh("mkdir -p stash_dir")
+                sh("mkdir -p another_stash")
+                writeFile file: "stash_dir/somefile", text: "Hey look, some text."
+                writeFile file: "another_stash/otherfile", text: "Hey look, put other text."
+                stash name:"my_stash", includes: "stash_dir/*, another_stash/*", allowEmpty: true
             }
         }
         stage('Test') {
             when {
                 expression {
-                    //env.BRANCH_NAME == 'ffan' || env.BRANCH_NAME == 'main'
+                    //env.BRANCH_NAME == 'ffan' || env.BRANCH_NAME == 'main' only for multi-branch
                     params.execute
                 } 
             } 
@@ -50,6 +55,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                // check stash files
+                unstash "my_stash"
+                sh("ls")
+                sh("ls stash_dir")
                 echo 'Deploying....'
                 echo "use param version_str ${params.string_var}"
                 script {
