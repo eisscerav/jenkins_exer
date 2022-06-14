@@ -38,6 +38,7 @@ pipeline {
         }
         stage('Test') {
             when {
+                beforeAgent true
                 expression {
                     //env.BRANCH_NAME == 'ffan' || env.BRANCH_NAME == 'main' only for multi-branch
                     params.execute
