@@ -50,8 +50,6 @@ pipeline {
                 echo "${env.JOB_NAME}"
                 echo "${env.BRANCH_NAME}"
                 sh(script: "python3 main.py --family ffan_home")
-                sh("mkdir tmp")
-                sh("touch tmp/a.txt")
             }
         }
         stage('Deploy') {
@@ -62,6 +60,8 @@ pipeline {
                 sh("ls stash_dir")
                 echo 'Deploying....'
                 echo "use param version_str ${params.string_var}"
+                sh("mkdir tmp")
+                sh("touch tmp/a.txt")
                 script {
                     gv.deploy_app()
                 }
