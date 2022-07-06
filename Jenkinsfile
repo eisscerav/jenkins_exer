@@ -1,5 +1,16 @@
 def gv
 my_agents = ['P5000', 'RTX4000', 'K4200']
+def mymap = [
+    "k1": "v1",
+    "k2": "v2",
+    "k3": "v3" 
+]
+
+def show_map(dict) {
+    dict.each {
+        entry -> println "$entry.key: $entry.value"
+    }
+}
 
 pipeline {
     agent {label "${agent}"}
@@ -15,6 +26,7 @@ pipeline {
     stages {
         stage('init') {
             steps {
+                show_map(mymap)
                 script {
                     gv = load "script.groovy"
                 }
