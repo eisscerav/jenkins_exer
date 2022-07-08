@@ -6,6 +6,11 @@ def mymap = [
     "k3": "v3" 
 ]
 
+def hello(name) {
+    def greeting = "hello ${name}"
+    return greeting
+}
+
 def show_map(dict) {
     dict.each {
         entry -> println "$entry.key: $entry.value"
@@ -29,6 +34,17 @@ pipeline {
                 show_map(mymap)
                 script {
                     gv = load "script.groovy"
+                    my_name = "ffan"
+                }
+            }
+        }
+        stage('demo call function') {
+            steps {
+                script {
+                    def greeting = hello(my_name)
+                    def cmd = "${greet}"
+                    cmd += " sof"
+                    sh("echo ${cmd}")
                 }
             }
         }
