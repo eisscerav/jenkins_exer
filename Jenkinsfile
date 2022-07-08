@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     def greeting = hello(my_name)
-                    def cmd = "${greet}"
+                    def cmd = "${greeting}"
                     cmd += " sof"
                     sh("echo ${cmd}")
                 }
