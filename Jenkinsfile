@@ -28,7 +28,7 @@ pipeline {
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
     
-    stage('mimic fail') {
+    stages ('mimic fail') {
         steps{
             script {
                 if(params.execute) {
