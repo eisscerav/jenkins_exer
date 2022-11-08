@@ -1,7 +1,11 @@
 import argparse
+import os
 
 
 def demo():
+    envs = os.environ
+    for env in envs:
+        print(f'{env}={envs[env]}')
     print("demo python")
 
 
@@ -14,5 +18,5 @@ def demo_argparse():
 
 
 if __name__ == '__main__':
-#    demo()
+    demo()
     demo_argparse()

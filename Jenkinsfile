@@ -27,24 +27,7 @@ pipeline {
         choice(name: 'agent', choices: my_agents, description: 'choose specific agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
     }
-    
-    stages ('mimic fail') {
-        steps{
-            script {
-                if(params.execute) {
-                    try {
-                        neg_test_cmd = "/cudnnNegativeTest_static"
-                        echo(neg_test_cmd)
-                        // sh 'ls /non-exist' 
-                    }
-                    catch (err){
-                        echo err.getMessage()
-                    }     
-                }
-            }
-        }
-    }
-    
+
     stages {
         stage('init') {
             steps {
@@ -55,6 +38,7 @@ pipeline {
                 }
             }
         }
+
         stage('demo call function') {
             steps {
                 script {
@@ -62,6 +46,23 @@ pipeline {
                     def cmd = "${greeting}"
                     cmd += " sof"
                     sh("echo ${cmd}")
+                }
+            }
+        }
+
+        stage ('mimic fail') {
+            steps{
+                script {
+                    if(params.execute) {
+                        try {
+                            neg_test_cmd = "/cudnnNegativeTest_static"
+                            echo(neg_test_cmd)
+                            // sh 'ls /non-exist'
+                        }
+                        catch (err){
+                            echo err.getMessage()
+                        }
+                    }
                 }
             }
         }
