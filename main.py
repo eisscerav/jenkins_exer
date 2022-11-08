@@ -8,6 +8,6 @@ def demo():
 if __name__ == '__main__':
     envs = os.environ
     for env in envs:
-        print(f'key={env}, value={envs[env]}')
+        print(f'{env}={envs[env]}')
     demo()
 
