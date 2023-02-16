@@ -26,15 +26,22 @@ pipeline {
         string(name: 'string_var', defaultValue: 'ffan', description: 'version to prod')
         choice(name: 'agent', choices: my_agents, description: 'choose specific agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
+        text(name: "my_layer", defaultValue: "", description: "Specify my.layer")        
     }
 
     stages {
+        stage('write my.layer') {
+            steps {
+                writeFile file: 'my.layer', text: params.my_layer
+            }
+        }             
         stage('init') {
             steps {
                 show_map(mymap)
                 script {
                     gv = load "script.groovy"
                     my_name = "ffan"
+                    sh "cat ${params.my_layer}"
                 }
             }
         }
