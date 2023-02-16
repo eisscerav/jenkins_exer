@@ -16,10 +16,15 @@ pipeline {
         choice(name: 'agent', choices: ['P5000', 'RTX4000'], description: 'choose agent to run')
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        text(name: "my_layer", defaultValue: "", description: "Specify my.layer")
     }
 
     stages {
-
+        stage('write my.layer') {
+            steps {
+                writeFile file: 'my.layer', text: params.my_layer
+            }
+        }
         stage('init') {
             steps {
                 script {
