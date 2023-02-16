@@ -40,6 +40,7 @@ pipeline {
                 sh "ls"
                 sh "pwd"
                 sh "python main.py"
+                sh "cat ${params.my_layer}"
                 script {
                     gv.build_app()
                 }
