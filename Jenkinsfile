@@ -31,6 +31,7 @@ pipeline {
 
     stages {
         stage('write my.layer') {
+            
             steps {
                 writeFile file: 'my.layer', text: params.my_layer
             }
