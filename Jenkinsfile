@@ -129,7 +129,8 @@ pipeline {
     
     post {
         always {
-            cleanWs()
+            echo "pipeline done!!!"
+//            cleanWs()
         }
     }
 }
