@@ -41,7 +41,7 @@ pipeline {
                 script {
                     gv = load "script.groovy"
                     my_name = "ffan"
-                    sh "cat ${params.my_layer}"
+                    sh "cat ${params.my.layer}"
                 }
             }
         }
