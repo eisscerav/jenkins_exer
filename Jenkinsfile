@@ -28,7 +28,9 @@ pipeline {
         booleanParam(name: 'execute', defaultValue: true, description: 'bool parameter')
         text(name: "my_layer", defaultValue: "", description: "Specify my.layer")        
     }
-
+    options {
+        disableConcurrentBuilds()
+    }
     stages {
         stage('write my.layer') {
             
