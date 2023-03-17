@@ -12,6 +12,7 @@ def hello(name) {
 }
 
 def show_map(dict) {
+    // see https://www.baeldung.com/groovy-map-iterating
     dict.each {
         entry -> println "$entry.key: $entry.value"
     }
