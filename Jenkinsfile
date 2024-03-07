@@ -20,6 +20,7 @@ def show_map(dict) {
 
 pipeline {
     agent {label "${agent}"}
+    //triggers{ cron('TZ=Asia/Shanghai\nH 20 * * 5') }
     environment {
         MY_ENV = '1.1.0'
     }
