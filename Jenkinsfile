@@ -131,11 +131,31 @@ pipeline {
             }
         }
     }
+
+
     
     post {
         always {
             echo "pipeline done!!!"
 //            cleanWs()
         }
-    }
-}
+    } //post
+    // post sample
+    // post {
+    //     success {
+    //         node("RTX_4000") { 
+    //             script {
+    //                 sh("echo post success")
+    //             }                   
+    //         }
+         
+    //     }
+    //     failure {
+    //         node("RTX_4000") {
+    //             script {
+    //                 sh("echo post failure")
+    //             }                
+    //         }
+    //     }
+    // }
+} //pipeline
