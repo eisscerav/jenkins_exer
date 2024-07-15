@@ -142,13 +142,21 @@ pipeline {
     } //post
     // post sample
     // post {
+        //     always {
+        //     node("ffan-AMD3600") {
+        //         script {
+        //             emailext body: 'The build ${JOB_NAME} #${BUILD_NUMBER} has finished with status: failure. Check console output at ${BUILD_URL} to view the results.',
+        //                      subject: "Build Status: ${env.status}", 
+        //                      to: 'ffan@nvidia.com' 
+        //         }
+        //     }
+        // }
     //     success {
     //         node("RTX_4000") { 
     //             script {
     //                 sh("echo post success")
     //             }                   
     //         }
-         
     //     }
     //     failure {
     //         node("RTX_4000") {
